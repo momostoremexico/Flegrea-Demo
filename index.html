@@ -8322,7 +8322,7 @@ document.addEventListener('keydown',e=>{
   addEventListener('scroll',re,{passive:true}); addEventListener('resize',re); }
 { const _r=render; render=function(){ const x=_r.apply(this,arguments); try{ fgPaint(); }catch(e){ console.warn(e); } return x; }; }
 // al entrar a la demo, arranca el recorrido de Inicio
-{ const _c=fxWelcomeClose; fxWelcomeClose=function(){ const x=_c.apply(this,arguments); try{ if(!sessionStorage.getItem('fg-auto')){ sessionStorage.setItem('fg-auto','1'); const go=()=>{ if(fgKey()==='inicio'&&!FG.tour) fgTour(0); }; setTimeout(()=>(window.requestIdleCallback?requestIdleCallback(go,{timeout:600}):go()),700); } }catch(e){} return x; }; }
+{ const _c=fxWelcomeClose; fxWelcomeClose=function(){ const x=_c.apply(this,arguments); try{ if(!sessionStorage.getItem('fg-auto')){ sessionStorage.setItem('fg-auto','1'); const go=()=>{ if(fgKey()==='inicio'&&!FG.tour) fgTour(0); }; /* el recorrido ya no arranca solo: se inicia con el botón */ } }catch(e){} return x; }; }
 // arranque más ligero: el segundo render va en otra tarea y sin melodía
 fxStart=function(){ ST.hide=false; setTimeout(()=>{ const lm=loginMelody; try{ loginMelody=()=>{}; unlock('admin'); }catch(e){} finally{ loginMelody=lm; } },0); setTimeout(fxWelcome,700); };
 FX_TIPS['dinero/resultados'][1][1]='.dtabs, .seg, .tabs, [role=tablist]';
