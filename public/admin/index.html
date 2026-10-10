@@ -92,6 +92,12 @@ button,input{font:inherit;color:inherit}
 .login h1{font-family:var(--font-d);font-size:24px;margin:14px 0 6px;letter-spacing:-.02em}
 .login p{margin:0 0 16px;color:#b5c7bc;font-size:14px}
 .login label{display:block;font-size:13px;color:#b5c7bc;margin-bottom:6px}
+.pw{position:relative}
+.pw input{padding-right:48px!important}
+#eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:38px;height:38px;border:0;border-radius:10px;background:transparent;color:#b5c7bc;display:grid;place-items:center;cursor:pointer}
+#eye svg{width:20px;height:20px}
+#eye[aria-pressed="true"]{color:var(--ele)}
+#eye:focus-visible{outline:2px solid var(--ele)}
 .login input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(181,199,188,.25);background:rgba(245,248,245,.06);color:#fff;font-size:16px}
 .login input:focus{outline:2px solid var(--ele);outline-offset:1px}
 .login .btn{width:100%;margin-top:14px;background:var(--ele);color:var(--obs);padding:12px}
@@ -133,7 +139,7 @@ function inRange(v){ const now=Date.now(), d=fDay.format(new Date(v.start));
 function paint(){
   const app=$('#app');
   if(!A.key){ app.innerHTML=`<form class="login" id="lf"><img src="/icons/icon-192.png" alt=""><h1>Visitas a la demo</h1><p>Solo para el administrador de Flegrea.</p>
-      <label for="pw">Contraseña</label><input id="pw" type="password" autocomplete="current-password" required><div class="err" role="alert">${esc(A.err)}</div><button class="btn" type="submit">Entrar</button></form>`;
+      <label for="pw">Contraseña</label><div class="pw"><input id="pw" type="password" autocomplete="current-password" autocapitalize="none" autocorrect="off" spellcheck="false" required><button type="button" id="eye" aria-label="Mostrar contraseña" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div class="err" role="alert">${esc(A.err)}</div><button class="btn" type="submit">Entrar</button></form>`;
     $('#pw').focus(); return; }
   const V=A.visits.filter(inRange), people=new Set(V.map(v=>v.vid||v.sid)).size, avg=V.length?V.reduce((a,v)=>a+secs(v),0)/V.length:0, booked=V.filter(v=>v.cta>0).length;
   const live=A.visits.filter(v=>Date.now()-v.last<120e3).length;
@@ -180,6 +186,7 @@ document.addEventListener('submit',e=>{ if(e.target.id!=='lf') return; e.prevent
 document.addEventListener('click',async e=>{
   const r=e.target.closest('[data-r]'); if(r){ A.range=r.dataset.r; paint(); return; }
   const s=e.target.closest('[data-s]'); if(s){ A.open=A.open===s.dataset.s?null:s.dataset.s; paint(); return; }
+  const ey=e.target.closest('#eye'); if(ey){ const i=$('#pw'), on=i.type==='password'; i.type=on?'text':'password'; ey.setAttribute('aria-pressed',on); ey.setAttribute('aria-label',on?'Ocultar contraseña':'Mostrar contraseña'); i.focus(); return; }
   const d=e.target.closest('[data-del]'); if(d){
     if(d.dataset.ok!=='1'){ d.dataset.ok='1'; d.textContent='Toca otra vez para borrar'; return; }
     d.disabled=true; const res=await fetch('/api/admin/visits?sid='+encodeURIComponent(d.dataset.del),{method:'DELETE',headers:{authorization:'Bearer '+A.key}}).catch(()=>null);
