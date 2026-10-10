@@ -118,16 +118,17 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const dur=s=>{ s=Math.round(s||0); if(s<60) return s+' s'; const m=Math.floor(s/60), r=s%60; if(m<60) return m+' min'+(r&&m<10?' '+r+' s':''); return Math.floor(m/60)+' h '+(m%60)+' min'; };
 const secs=v=>v.active||Math.max(0,(v.last-v.start)/1000);
 const A={key:'',visits:[],range:'7',open:null,at:0,err:''};
-try{ A.key=localStorage.getItem('fg-admin-key')||''; }catch(e){}
+// la contraseña se pide cada vez que abres el panel; no se guarda en el dispositivo
+try{ localStorage.removeItem('fg-admin-key'); }catch(e){}
 const $=s=>document.querySelector(s);
 
 async function load(){
   try{
     const r=await fetch('/api/admin/visits',{headers:{authorization:'Bearer '+A.key},cache:'no-store'});
-    if(r.status===401){ A.key=''; try{ localStorage.removeItem('fg-admin-key'); }catch(e){} A.err='Esa contraseña no es correcta.'; return paint(); }
+    if(r.status===401){ A.key=''; A.err='Esa contraseña no es correcta.'; return paint(); }
     if(!r.ok) throw new Error('HTTP '+r.status);
     A.visits=(await r.json()).visits||[]; A.at=Date.now(); A.err='';
-    try{ localStorage.setItem('fg-admin-key',A.key); localStorage.setItem('fg-admin','1'); }catch(e){}
+    try{ localStorage.setItem('fg-admin','1'); }catch(e){}
   }catch(e){ A.err='No se pudieron cargar las visitas. Revisa tu internet y vuelve a intentar.'; }
   paint();
 }
@@ -192,7 +193,7 @@ document.addEventListener('click',async e=>{
     d.disabled=true; const res=await fetch('/api/admin/visits?sid='+encodeURIComponent(d.dataset.del),{method:'DELETE',headers:{authorization:'Bearer '+A.key}}).catch(()=>null);
     if(res&&res.ok){ A.visits=A.visits.filter(v=>v.sid!==d.dataset.del); A.open=null; paint(); } else { d.disabled=false; d.textContent='No se pudo borrar, intenta de nuevo'; } return; }
   if(e.target.closest('#rf')){ load(); return; }
-  if(e.target.closest('#out')){ try{ localStorage.removeItem('fg-admin-key'); }catch(x){} A.key=''; A.visits=[]; paint(); }
+  if(e.target.closest('#out')){ A.key=''; A.visits=[]; paint(); }
 });
 setInterval(()=>{ if(A.key&&document.visibilityState==='visible') load(); },60000);
 if(A.key) { paint(); load(); } else paint();

@@ -8723,7 +8723,7 @@ if(!resume()) fxStart(); else setTimeout(fxWelcome,700);
 })();
 </script><script>/* ================= NOMBRE SECRETO: lleva al acceso de administrador ================= */
 (function(){
-  const H='79ea60148a48775cdb891b2174066cb8ff48d63ad74a0ddd7db330ca9221eae8';
+  const H='46ebd60fbf4a217755972008f317aac69bf3df4eb8e0b34d6257202b1e44caf8';
   const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
   const sha=async s=>{ try{ const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)); return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join(''); }catch(e){ return ''; } };
   let hit=false, seq=0;
