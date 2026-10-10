@@ -24,6 +24,12 @@ export default async (req: Request, context: Context) => {
     return new Response("Bad session", { status: 400 })
   }
 
+  // el administrador entró con el nombre secreto: su visita no cuenta
+  if (s.drop === true) {
+    await getStore("visitas").delete(`s/${s.sid}`)
+    return new Response(null, { status: 204 })
+  }
+
   const now = Date.now()
   const start = num(s.start, now) || now
   const path = Array.isArray(s.path)
