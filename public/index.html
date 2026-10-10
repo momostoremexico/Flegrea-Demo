@@ -8282,7 +8282,7 @@ function fgTourPlace(){ const T=FG.tour; if(!T) return; const box=document.getEl
   const navs=fgNavRects().map(n=>`M${n.left} ${n.top}H${n.right}V${n.bottom}H${n.left}Z`).join(' ');
   const full=`path(evenodd,'M0 0H${W}V${H}H0Z ${navs}')`;
   if(!el){ card.classList.add('mid'); card.classList.remove('dock'); card.style.transform=''; card.style.bottom=''; dim.style.clipPath=full; ring.style.opacity=0; return; }
-  card.classList.remove('mid'); const {pad,gap,edge}=FGP, r=el.getBoundingClientRect(), ch=card.offsetHeight, cw=card.offsetWidth;
+  card.classList.remove('mid'); const {pad,gap,edge}=FGP, r=fgRect(T,el), ch=card.offsetHeight, cw=card.offsetWidth;
   let top=r.top-pad, bot=r.bottom+pad, left=Math.max(4,r.left-pad), right=Math.min(W-4,r.right+pad), dock=T.dock, y=0;
   if(!dock){ if(bot+gap+ch<=H-edge) y=bot+gap; else if(top-gap-ch>=edge) y=top-gap-ch; else dock=true; }
   card.classList.toggle('dock',dock);
@@ -8294,13 +8294,18 @@ function fgTourPlace(){ const T=FG.tour; if(!T) return; const box=document.getEl
   dim.style.clipPath=`path(evenodd,'M0 0H${W}V${H}H0Z ${navs} M${left+rad} ${top}H${right-rad}A${rad} ${rad} 0 0 1 ${right} ${top+rad}V${bot-rad}A${rad} ${rad} 0 0 1 ${right-rad} ${bot}H${left+rad}A${rad} ${rad} 0 0 1 ${left} ${bot-rad}V${top+rad}A${rad} ${rad} 0 0 1 ${left+rad} ${top}Z')`;
   ring.style.opacity=1; ring.style.transform=`translate3d(${left}px,${top}px,0)`; ring.style.width=w+'px'; ring.style.height=h+'px';
 }
-function fgTourSwitch(k){ const T=FG.tour; if(!T) return; T.k=k; T.steps=fgSteps(k); T.i=0; T.el=null; const box=document.getElementById('fg-tour'); if(box){ box.querySelector('.fg-ring').style.opacity=0; } clearTimeout(T.sw); T.sw=setTimeout(()=>{ if(FG.tour&&FG.tour.k===k) fgTourShow(); },380); }
-function fgTourMove(d){ const T=FG.tour; if(!T) return; const j=T.i+d; if(j<0) return; if(j>=T.steps.length){ fgTourEnd(); return; } T.i=j; fgTourShow(); }
+function fgTourSwitch(k){ const T=FG.tour; if(!T) return; T.k=k; T.steps=fgSteps(k); T.i=0; T.el=null; T.touched=false; const box=document.getElementById('fg-tour'); if(box){ box.querySelector('.fg-ring').style.opacity=0; } clearTimeout(T.sw); T.sw=setTimeout(()=>{ if(FG.tour&&FG.tour.k===k) fgTourShow(); },380); }
+// si ya interactuaste con el apartado, la luz incluye lo que se abrió o cambió con tu toque
+function fgRect(T,el){ const r=el.getBoundingClientRect(), st=T.steps[T.i]; if(!T.touched||!st||!st.x) return r;
+  const v=document.getElementById('view'); let t=r.top,b=r.bottom,l=r.left,rt=r.right;
+  (v?[...v.querySelectorAll(st.x)]:[]).filter(e=>!e.hidden&&e.getClientRects().length).forEach(e=>{ const q=e.getBoundingClientRect(); if(!q.height) return; t=Math.min(t,q.top); b=Math.max(b,q.bottom); l=Math.min(l,q.left); rt=Math.max(rt,q.right); });
+  return {top:t,bottom:b,left:l,right:rt,width:rt-l,height:b-t}; }
+function fgTourMove(d){ const T=FG.tour; if(!T) return; const j=T.i+d; if(j<0) return; if(j>=T.steps.length){ fgTourEnd(); return; } T.i=j; T.touched=false; fgTourShow(); }
 function fgTourEnd(quick){ const b=document.getElementById('fg-tour'); document.body.classList.remove('fg-touring');
   FG.tour=null; if(!b) return; if(quick){ b.remove(); return; } b.classList.remove('in'); setTimeout(()=>b.remove(),240); }
 /* ---------- eventos ---------- */
 // al tocar algo durante el recorrido, reacomoda la guía
-document.addEventListener('click',()=>{ if(!FG.tour) return; setTimeout(fgTourPlace,60); setTimeout(fgTourPlace,380); });
+window.addEventListener('click',e=>{ const T=FG.tour; if(!T) return; if(T.el&&T.el.isConnected&&T.el.contains(e.target)) T.touched=true; [60,380,700].forEach(ms=>setTimeout(fgTourPlace,ms)); },true);
 document.addEventListener('click',e=>{ const t=e.target.closest('[data-fg]'); if(!t) return; e.stopPropagation(); e.preventDefault(); const a=t.dataset.fg;
   if(a==='info'){ const i=+t.dataset.fgi; if(FG.pop&&FG.pop.i===i) fgPopClose(); else fgPop(i,t); }
   else if(a==='pclose') fgPopClose();
@@ -8670,13 +8675,18 @@ FG_INFO['fin:ventas']=FG_INFO['fin:ventas'].map(x=>x.t==='Venta por día'?{...x,
 .fg-pl-r.tot b{font-family:var(--font-d);font-size:24px;color:var(--good)}
 .fg-pl-more{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:14px;border:0;background:var(--fill);color:var(--accent);font-weight:650;font-size:13.5px;padding:11px;border-radius:12px;cursor:pointer}
 .fg-pl-more svg{width:16px;height:16px;transition:transform .2s}
-.fg-pl-more.open svg,.fg-pl-more[aria-expanded="true"] svg{transform:rotate(180deg)}
+.fg-pl-more.open > svg,.fg-pl-more[aria-expanded="true"] > svg{transform:rotate(180deg)}
 .fg-pl-det{margin-top:16px}
 /* productos: menos texto */
 .pp-list .pp-s span{display:none}
 .pp-list .pp-s{justify-content:flex-end}
 @media (prefers-reduced-motion:reduce){ .fgb-t i,.fg-pl-bar i{animation:none} }
 `; document.head.appendChild(st); })();
+
+// lo que se ilumina junto con el apartado cuando lo tocas durante el recorrido
+{ const X={'fin:estado':{'Detalle completo':'.fg-pl-det'},'paq/inventario':{'Estado del stock':'.ig','Buscar e historial':'.ig'},'paq/recepcion':{'Filtros':'.po-grid'},'paq/devoluciones':{'Indicadores':'#ret-table'},
+    'hosts/desempeno':{'Periodo':'.hgrid'},'hosts/asistencia':{'Calendario del mes':'.as-strip, .as-lives'},'hosts/turnos':{'Elige una host':'.tw-head, .xho, .tw-nav, .tw-card'},'fin:productos':{'Ganancia de producto':'.pp-list'}};
+  Object.entries(X).forEach(([k,m])=>(FG_INFO[k]||[]).forEach(it=>{ if(m[it.t]) it.x=m[it.t]; })); }
 
 ST.menu = innerWidth>=1100;
 render();
