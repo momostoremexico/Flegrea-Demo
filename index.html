@@ -7978,14 +7978,14 @@ function fxTipHtml(){
   return `<div class="fx-tip" data-noi18n-skip><div class="fx-tip-h"><span class="fx-dot"></span><b>Demo guiada</b><button class="fx-x" data-fx="hide" aria-label="Ocultar guía">×</button></div>
     ${T.map(([t,sel,btn])=>`<p>${t}${sel?` <button class="fx-go" data-fx="show" data-sel="${esc(sel)}">${btn} ›</button>`:''}</p>`).join('')}</div>`;
 }
-function fxCtaHtml(){ return `<div class="card mt fx-cta"><div><span class="fx-k"><img class="fx-logo" src="${LOGO}" alt="">${FX.brand} Development</span><b>¿Quieres una plataforma así para tu negocio?</b><p>La diseñamos a la medida de tu operación: tus procesos, tu equipo y tus números. Lista en semanas.</p></div>${fxCal('Agenda tu llamada gratis','big')}</div>`; }
+function fxCtaHtml(){ return `<div class="card mt fx-cta"><div><span class="fx-k"><img class="fx-logo" src="${LOGO}" alt="">${FX.brand} Development</span><b>¿Quieres una plataforma así para tu negocio?</b><p>La diseñamos a la medida de tu operación: tus procesos, tu equipo y tus números. Lista en semanas.</p></div>${fxCal('Agendar una reunión','big')}</div>`; }
 { const _r=render; render=function(){ const x=_r.apply(this,arguments); try{ fxPaint(); }catch(e){} return x; }; }
 function fxPaint(){
   const v=document.getElementById('view'); if(!v||document.body.classList.contains('locked')) return;
   v.querySelectorAll(':scope > .fx-tip, :scope > .fx-cta').forEach(e=>e.remove());
   const tip=fxTipHtml(); if(tip){ const hd=v.querySelector(':scope > .ph, :scope > header'); (hd||v.firstElementChild)?.insertAdjacentHTML(hd?'afterend':'beforebegin',tip); }
   if(!SIM) v.insertAdjacentHTML('beforeend',fxCtaHtml());
-  if(!document.getElementById('fx-fab')){ document.body.insertAdjacentHTML('beforeend',`<a id="fx-fab" href="${FX.cal}" target="_blank" rel="noopener" data-fxcal>${ic('cal')}<span>Agenda tu llamada</span></a><div id="fx-bar">Demo de <b>${FX.brand}</b> · datos de ejemplo</div>`); }
+  if(!document.getElementById('fx-fab')){ document.body.insertAdjacentHTML('beforeend',`<a id="fx-fab" href="${FX.cal}" target="_blank" rel="noopener" data-fxcal>${ic('cal')}<span>Agendar una reunión</span></a><div id="fx-bar">Demo de <b>${FX.brand}</b> · datos de ejemplo</div>`); }
 }
 document.addEventListener('click',e=>{ const t=e.target.closest('[data-fx]'); if(!t) return; e.stopPropagation(); e.preventDefault();
   if(t.dataset.fx==='hide'){ FX.hide=FX.hide||{}; FX.hide[fxKey()]=1; t.closest('.fx-tip')?.remove(); return; }
@@ -7999,7 +7999,7 @@ function fxWelcome(){ try{ if(sessionStorage.getItem('fx-w')) return; }catch(e){
     <p>Esta es la plataforma que usa una tienda de TikTok Shop para manejar ventas en vivo, inventario, envíos, equipo y finanzas. Los números son de ejemplo.</p>
     <label class="fx-nm" for="fx-name">¿Cómo te llamas?<input class="input" id="fx-name" autocomplete="given-name" maxlength="40" placeholder="Tu nombre" value="${esc(nm)}"></label>
     <ul><li>Navega libre por todas las secciones</li><li>Sigue la <b>demo guiada</b> en cada pantalla</li><li>Cambia a la vista de una host o del almacén en <b>Vistas</b></li></ul>
-    <div class="fx-w-b"><button class="fx-btn big" type="submit">Entrar a la demo</button>${fxCal('Agendar llamada','ghost')}</div></form></div>`);
+    <div class="fx-w-b"><button class="fx-btn big" type="submit">Entrar a la demo</button>${fxCal('Agendar una reunión','ghost')}</div></form></div>`);
   setTimeout(()=>{ const i=document.getElementById('fx-name'); if(i&&matchMedia('(pointer:fine)').matches) i.focus(); },350); }
 document.addEventListener('submit',e=>{ if(e.target.id!=='fx-wf') return; e.preventDefault();
   const v=(document.getElementById('fx-name').value||'').trim().replace(/\s+/g,' ').replace(/(^|\s)\S/g,m=>m.toUpperCase());
@@ -8011,10 +8011,10 @@ function fxWelcomeClose(){ const w=document.getElementById('fx-w'); if(w){ w.cla
 { const _a=vAjustes; vAjustes=function(){ let h=_a.apply(this,arguments);
     h=h.replace(/<div class="st-label">Seguridad<\/div>[\s\S]*?<\/section>\s*(?=<div class="st-label">Preferencias)/,'');
     h=h.replace(/<button class="st-row" data-act="demo-toggle"[\s\S]*?<\/button>/,'');
-    h=h.replace(/<button class="st-out" data-act="logout">[\s\S]*?<\/button>/,`<div class="fx-aj">${fxCal('Agenda tu llamada con '+FX.brand,'big')}</div>`);
+    h=h.replace(/<button class="st-out" data-act="logout">[\s\S]*?<\/button>/,`<div class="fx-aj">${fxCal('Agendar una reunión con '+FX.brand,'big')}</div>`);
     return h; }; }
 function fxStart(){ ST.hide=false; try{ unlock('admin'); }catch(e){} setTimeout(fxWelcome,700); }
-Object.assign(I18N_EN,{'Demo guiada':'Guided demo','¿Quieres una plataforma así para tu negocio?':'Want a platform like this for your business?','La diseñamos a la medida de tu operación: tus procesos, tu equipo y tus números. Lista en semanas.':'We design it around your operation: your processes, your team and your numbers. Ready in weeks.','Agenda tu llamada gratis':'Book your free call','Agenda tu llamada':'Book a call','Agendar llamada':'Book a call','Entrar a la demo':'Enter the demo','¿Cómo te llamas?':'What is your name?','Tu nombre':'Your name','Invitado':'Guest','Bienvenido a una plataforma real':'Welcome to a real platform','datos de ejemplo':'sample data','Navega libre por todas las secciones':'Browse every section freely','Desliza para encontrarlo':'Scroll to find it'}); I18N.ph=null;
+Object.assign(I18N_EN,{'Demo guiada':'Guided demo','¿Quieres una plataforma así para tu negocio?':'Want a platform like this for your business?','La diseñamos a la medida de tu operación: tus procesos, tu equipo y tus números. Lista en semanas.':'We design it around your operation: your processes, your team and your numbers. Ready in weeks.','Agendar una reunión':'Book a meeting','Agendar una reunión':'Book a meeting','Agendar una reunión':'Book a meeting','Entrar a la demo':'Enter the demo','¿Cómo te llamas?':'What is your name?','Tu nombre':'Your name','Invitado':'Guest','Bienvenido a una plataforma real':'Welcome to a real platform','datos de ejemplo':'sample data','Navega libre por todas las secciones':'Browse every section freely','Desliza para encontrarlo':'Scroll to find it'}); I18N.ph=null;
 
 /* ================= GUÍA FLEGREA: botones ⓘ, recorrido por pantalla y ruta guiada ================= */
 const FG_IC={
@@ -8199,7 +8199,7 @@ function fgPaint(){
 function fgNextHtml(k){
   const i=fgIdx(k), N=FG_SCREENS.length, S=FG_SCREENS[i], nx=FG_SCREENS[i+1], seen=fgSeenGet().filter(x=>fgScr(x)).length, pct=Math.round(seen/N*100);
   const head=`<div class="fg-next-top"><span class="fg-k"><img class="fx-logo" src="${LOGO}" alt="">Guía de la demo</span><button class="fg-map-b" data-fg="map" type="button">${FG_IC.map}<span>${seen} de ${N} vistas</span></button></div><div class="fg-prog"><u style="width:${pct}%"></u></div>`;
-  if(!nx) return `<div class="fg-next" data-noi18n>${head}<div class="fg-next-b"><div class="grow"><span class="fg-l">Terminaste el recorrido</span><b>Ya conoces toda la plataforma</b><p>Imagina esto con tus procesos, tu equipo y tus números.</p></div><div class="fg-next-a"><button class="fg-btn ghost" data-fg="go" data-k="inicio" type="button"><span>Volver al inicio</span></button>${fxCal('Agenda tu llamada','fg-cal')}</div></div></div>`;
+  if(!nx) return `<div class="fg-next" data-noi18n>${head}<div class="fg-next-b"><div class="grow"><span class="fg-l">Terminaste el recorrido</span><b>Ya conoces toda la plataforma</b><p>Imagina esto con tus procesos, tu equipo y tus números.</p></div><div class="fg-next-a"><button class="fg-btn ghost" data-fg="go" data-k="inicio" type="button"><span>Volver al inicio</span></button>${fxCal('Agendar una reunión','fg-cal')}</div></div></div>`;
   return `<div class="fg-next" data-noi18n>${head}<div class="fg-next-b"><div class="grow"><span class="fg-l">Siguiente · ${nx.s!==S.s?esc(nx.s)+' › ':''}${esc(nx.n)}</span><b>${esc(nx.d)}</b></div><div class="fg-next-a"><button class="fg-btn ghost" data-fg="tour" type="button">${FG_IC.play}<span>Recorrer esta pantalla</span></button><button class="fg-btn pri" data-fg="go" data-k="${nx.k}" data-t="1" type="button"><span>Ir a ${esc(nx.n)}</span>${FG_IC.next}</button></div></div></div>`;
 }
 function fgGo(k,tour){ fgPopClose(); fgTourEnd(true);
@@ -8261,7 +8261,7 @@ function fgTourShow(){ const T=FG.tour; if(!T) return; const st=T.steps[T.i], n=
     <h4>${esc(st.t)}</h4><p>${esc(st.d)}</p>${st.intro?`<span class="fg-free">Puedes tocar y moverte libre mientras te guío</span>`:''}
     <div class="fg-card-f">${last?
       (st.nx?`<button class="fg-btn ghost sm" data-fg="tend" type="button">Quedarme aquí</button><button class="fg-btn pri sm" data-fg="go" data-k="${st.nx.k}" data-t="1" type="button"><span>Ir a ${esc(st.nx.n)}</span>${FG_IC.next}</button>`
-             :`<button class="fg-btn ghost sm" data-fg="tend" type="button">Cerrar</button>${fxCal('Agenda tu llamada','fg-cal sm')}`)
+             :`<button class="fg-btn ghost sm" data-fg="tend" type="button">Cerrar</button>${fxCal('Agendar una reunión','fg-cal sm')}`)
       :`${T.i?`<button class="fg-btn ghost sm" data-fg="tprev" type="button">${FG_IC.l}<span>Atrás</span></button>`:`<button class="fg-btn ghost sm" data-fg="tend" type="button">Saltar</button>`}<button class="fg-btn pri sm" data-fg="tnext" type="button"><span>${T.i?'Siguiente':'Empezar'}</span>${FG_IC.next}</button>`}</div></div>`;
   card.classList.remove('swap'); void card.offsetWidth; card.classList.add('swap');
   const el=fgTarget(st); T.el=el; T.dock=fgDockMode(); card.classList.toggle('dock',T.dock);
@@ -8469,7 +8469,7 @@ body:has(#fx-w:not(.out)) #app,body:has(#fx-w:not(.out)) #fx-fab{content-visibil
 .fx-w-c{will-change:transform;animation:fgWin .4s cubic-bezier(.2,.8,.2,1) both!important}
 @keyframes fgWin{from{opacity:0;transform:translate3d(0,14px,0) scale(.98)}}
 #fx-w.out{transition:opacity .22s ease!important}
-/* botón flotante "Agenda tu llamada": siempre visible */
+/* botón flotante "Agendar una reunión": siempre visible */
 #fx-fab{z-index:940!important;display:flex!important;align-items:center;gap:7px;padding:10px 15px!important;border-radius:999px;font-size:13.5px;font-weight:650;white-space:nowrap;opacity:1!important;pointer-events:auto!important;-webkit-tap-highlight-color:transparent}
 #fx-fab span{display:inline!important}
 #fx-fab svg{flex:none}
