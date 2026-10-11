@@ -8016,6 +8016,160 @@ function fxWelcomeClose(){ const w=document.getElementById('fx-w'); if(w){ w.cla
 function fxStart(){ ST.hide=false; try{ unlock('admin'); }catch(e){} setTimeout(fxWelcome,700); }
 Object.assign(I18N_EN,{'Demo guiada':'Guided demo','¿Quieres una plataforma así para tu negocio?':'Want a platform like this for your business?','La diseñamos a la medida de tu operación: tus procesos, tu equipo y tus números. Lista en semanas.':'We design it around your operation: your processes, your team and your numbers. Ready in weeks.','Agendar una reunión':'Book a meeting','Agendar una reunión':'Book a meeting','Agendar una reunión':'Book a meeting','Entrar a la demo':'Enter the demo','¿Cómo te llamas?':'What is your name?','Tu nombre':'Your name','Invitado':'Guest','Bienvenido a una plataforma real':'Welcome to a real platform','datos de ejemplo':'sample data','Navega libre por todas las secciones':'Browse every section freely','Desliza para encontrarlo':'Scroll to find it'}); I18N.ph=null;
 
+/* ================= GUÍA EN INGLÉS: traducción completa del recorrido, botones ⓘ y vistas simples ================= */
+Object.assign(I18N_EN,{
+// pantallas
+'La pantalla del dueño: cómo va el negocio hoy y en el mes, en un solo vistazo.':'The owner’s screen: how the business is doing today and this month, at a glance.',
+'Cuánto vende cada host, qué tan cerca va de su meta y cuánto bono lleva.':'How much each host sells, how close they are to their goal and how much bonus they’ve earned.',
+'Quién llegó a tiempo a su LIVE, quién llegó tarde y quién faltó, día por día.':'Who showed up on time for their LIVE, who was late and who missed it, day by day.',
+'Los horarios de LIVE de cada host, semana por semana.':'Each host’s LIVE schedule, week by week.',
+'Tu utilidad real: lo que vendiste menos todo lo que cuesta operar.':'Your real profit: what you sold minus everything it costs to operate.',
+'Tu venta día por día, de dónde viene y a qué hora se vende más.':'Your sales day by day, where they come from and when you sell the most.',
+'De qué cuenta o canal viene cada peso que vendes.':'Which account or channel every peso you sell comes from.',
+'Cuánto aporta cada host a la venta del mes.':'How much each host contributes to this month’s sales.',
+'Qué productos te dejan más dinero y cuáles se venden más.':'Which products make you the most money and which sell the most.',
+'Cuánto vendes y cuánto ganas con precio LIVE, normal y flash.':'How much you sell and earn with LIVE, regular and flash prices.',
+'Del PDF de guías al paquete enviado: el almacén sube, empaca y escanea.':'From the labels PDF to the shipped package: the warehouse uploads, packs and scans.',
+'Consulta cualquier guía y ve cómo van todos los pedidos del mes.':'Look up any label and see how all of this month’s orders are doing.',
+'La mercancía que llega del proveedor: se cuenta, se confirma y se paga.':'Merchandise from your supplier: counted, confirmed and paid.',
+'Tu stock por modelo, talla y color, al día con cada venta y cada lote.':'Your stock by style, size and color, updated with every sale and every lot.',
+'Lo que regresan los clientes y cuánto te cuesta.':'What customers send back and what it costs you.',
+'Las reglas del negocio: comisiones, márgenes e inventario mínimo.':'Your business rules: fees, margins and minimum stock.',
+'Las metas y los bonos de tu equipo de hosts.':'Goals and bonuses for your host team.',
+'Sueldos y gastos fijos para calcular tu utilidad real.':'Salaries and fixed expenses to calculate your real profit.',
+'Mira la plataforma como la ve cada persona de tu equipo.':'See the platform the way each person on your team sees it.',
+'Personaliza la plataforma y prueba sus herramientas.':'Customize the platform and try its tools.',
+// apartados
+'Números del mes':'This month’s numbers','Lo más importante del negocio: venta, utilidad, pedidos y envíos pendientes.':'What matters most: sales, profit, orders and pending shipments.',
+'Se actualiza solo con cada venta':'Updates itself with every sale','La proyección estima cómo cierras el mes':'The projection estimates how you’ll close the month',
+'Tendencia':'Trend','Tus últimos 7 días contra los 7 anteriores: ves al momento si vas arriba o abajo.':'Your last 7 days vs the 7 before: see instantly if you’re up or down.',
+'Venta de hoy en vivo':'Today’s sales, live','La venta del día minuto a minuto, comparada con un día normal.':'Today’s sales minute by minute, compared with a normal day.',
+'Tócala para ver el desglose por hora':'Tap it to see the hourly breakdown','Incluye los LIVES que están al aire':'Includes the LIVEs on air right now',
+'Atajos a lo que más usas en el día.':'Shortcuts to what you use most every day.','Personalízalos con el botón de abajo':'Customize them with the button below',
+'Publica un mensaje y le aparece a todo tu equipo al entrar a la plataforma.':'Post a message and your whole team sees it when they open the platform.',
+'Ranking de hosts por venta. Quien cierre el mes en primer lugar gana un bono extra.':'Hosts ranked by sales. Whoever closes the month in first place wins an extra bonus.',
+'Lo que necesita tu atención hoy: LIVES sin iniciar, guías atrasadas y stock bajo.':'What needs your attention today: LIVEs not started, late labels and low stock.',
+'Toca un pendiente para resolverlo':'Tap an item to resolve it',
+'Periodo':'Period','Elige hoy, ayer, la semana, el mes o un rango propio. Todo se recalcula.':'Pick today, yesterday, the week, the month or a custom range. Everything recalculates.',
+'Tarjetas de hosts':'Host cards','La venta de cada host, si está en vivo y qué tan cerca va de su meta.':'Each host’s sales, whether they’re live and how close they are to their goal.',
+'Toca una tarjeta para ver su tablero completo':'Tap a card to see their full dashboard',
+'Ranking por venta del mes. El primer lugar se lleva un bono extra al cierre.':'Ranked by monthly sales. First place takes an extra bonus at month end.',
+'Escalera de bonos':'Bonus ladder','Mientras más vende una host, mayor porcentaje de bono gana.':'The more a host sells, the higher the bonus percentage.',
+'Se configura en Datos › Bonos':'Set it up in Data › Bonuses',
+'Calendario del mes':'Monthly calendar','Elige cualquier día del mes para ver cómo llegó cada host.':'Pick any day of the month to see how each host showed up.',
+'Usa las flechas o toca un día':'Use the arrows or tap a day',
+'LIVES del día':'Today’s LIVEs','Cada cuenta de TikTok con su host y turno. La entrada se registra con ubicación.':'Each TikTok account with its host and shift. Check-in is recorded with location.',
+'A tiempo, tarde o sin iniciar, al momento':'On time, late or not started, instantly',
+'Puntualidad del mes':'Monthly punctuality','Cuántos días llegó a tiempo cada host. Con esto se calcula su bono de puntualidad.':'How many days each host was on time. This sets their punctuality bonus.',
+'Elige una host':'Pick a host','Cambia entre hosts para ver su horario.':'Switch between hosts to see their schedule.',
+'Activa o pausada':'Active or paused','Una host activa cuenta para asistencia, ventas y la carrera del mes.':'An active host counts toward attendance, sales and the monthly race.',
+'Horario de la semana':'This week’s schedule','Sus turnos de LIVE día por día, descansos y horas totales.':'Their LIVE shifts day by day, days off and total hours.',
+'Usa las flechas para cambiar de semana':'Use the arrows to change weeks',
+'Indicadores del mes':'Monthly indicators','Venta, proyección al cierre, pedidos y utilidad neta del mes.':'Sales, month-end projection, orders and net profit for the month.',
+'Toca uno para ir directo a su detalle':'Tap one to jump to its details',
+'De cada $100':'Out of every $100','A dónde se va cada peso que vendes y cuánto te queda limpio.':'Where every peso you sell goes and how much you keep.',
+'Pasa el dedo por la barra para ver cada parte':'Slide over the bar to see each part',
+'Tu utilidad en 5 líneas':'Your profit in 5 lines','Lo que vendiste menos TikTok, mercancía y operación.':'What you sold minus TikTok, merchandise and operations.',
+'Detalle completo':'Full detail','El estado de resultados renglón por renglón, para tu contador.':'The income statement line by line, for your accountant.',
+'Venta de la semana':'This week’s sales','El total de la semana y una barra por día.':'The week’s total and one bar per day.',
+'Toca una barra para ver ese día':'Tap a bar to see that day','Cambia a Mes o Año arriba':'Switch to Month or Year above',
+'Este periodo contra el anterior, para saber si vas creciendo.':'This period vs the previous one, so you know if you’re growing.',
+'Mapa de calor: mientras más verde, más vende ese estado.':'Heat map: the greener, the more that state sells.',
+'Toca un estado para ver su venta':'Tap a state to see its sales',
+'Mapa de calor por día y hora: te dice en qué horarios conviene hacer LIVE.':'Heat map by day and hour: tells you the best times to go LIVE.',
+'Venta por canal':'Sales by channel','Cuánto vende cada cuenta de LIVE, los videos, la tienda y la publicidad.':'How much each LIVE account, videos, the shop and ads sell.',
+'Ideal para decidir dónde invertir tiempo':'Great for deciding where to invest your time',
+'Venta por host':'Sales by host','Qué porcentaje de la venta trae cada host y cuánto se vendió sin host.':'What share of sales each host brings and how much sold without a host.',
+'Cuánto te dejan tus productos después de su costo, con tu margen promedio.':'What your products leave you after cost, with your average margin.',
+'Elige el periodo que quieras ver':'Pick the period you want to see',
+'Ranking por producto':'Product ranking','Ordena por ganancia o por piezas para ver qué te conviene vender más.':'Sort by profit or units to see what you should sell more of.',
+'Compara precio LIVE, normal y flash: piezas, venta y ganancia de cada uno.':'Compare LIVE, regular and flash prices: units, sales and profit for each.',
+'Resumen de envíos':'Shipping summary','Pedidos por mandar, mandados hoy y atrasados.':'Orders to ship, shipped today and late.',
+'Sube el PDF de guías de TikTok. La plataforma las lee y las ordena sola.':'Upload the TikTok labels PDF. The platform reads and sorts them on its own.',
+'Todos los pedidos por empacar, agrupados por producto para surtir rápido.':'All orders to pack, grouped by product so you can pick fast.',
+'Al empacar se escanea la guía con la cámara. Queda registrado quién la mandó y a qué hora.':'When packing, the label is scanned with the camera. It records who shipped it and when.',
+'Lo que falta por mandar y lo ya mandado, por almacén.':'What’s left to ship and what’s already shipped, by warehouse.',
+'Cuántas guías mandó cada persona del almacén en el periodo.':'How many labels each warehouse person shipped in the period.',
+'El historial de archivos de guías y cuánto se ha mandado de cada uno.':'The history of label files and how much of each has shipped.',
+'Escribe o escanea una guía: ves si ya salió, quién la mandó y cuándo.':'Type or scan a label: see if it shipped, who shipped it and when.',
+'Estatus de pedidos':'Order status','Cómo van los pedidos del mes: entregados, en camino, por enviar y devueltos.':'How this month’s orders are doing: delivered, in transit, to ship and returned.',
+'Lotes del proveedor':'Supplier lots','Crea un lote nuevo o encuentra uno subiendo el PDF de la factura.':'Create a new lot or find one by uploading the invoice PDF.',
+'Cuánto le debes a tus proveedores y cuánto llevas pagado.':'How much you owe your suppliers and how much you’ve paid.',
+'Avisa antes de que venza cada pago':'Alerts you before each payment is due',
+'Ve todos los lotes, los que faltan por recibir o los que llegaron con diferencias.':'See all lots, the ones still to receive or the ones that arrived with differences.',
+'Cada lote con piezas, costo y estatus.':'Each lot with units, cost and status.','Toca uno para contarlo y confirmarlo':'Tap one to count and confirm it',
+'El catálogo completo, incluidos los productos fuera de la línea principal.':'The full catalog, including products outside the main line.',
+'Estado del stock':'Stock status','Total de piezas, tallas bajo el mínimo, agotadas y lo que viene en camino.':'Total units, sizes below minimum, sold out and what’s on the way.',
+'Toca uno para filtrar la lista':'Tap one to filter the list',
+'Buscar e historial':'Search and history','Busca un producto y revisa cada entrada y salida de mercancía.':'Search a product and review every stock movement in and out.',
+'Recomendaciones':'Recommendations','Qué volver a pedir, qué empujar en LIVE y el ranking de productos.':'What to reorder, what to push on LIVE and the product ranking.',
+'Cada modelo con sus piezas y tallas en semáforo: verde, bajo el mínimo o agotado.':'Each style with its units and sizes color-coded: green, below minimum or sold out.',
+'Toca un producto para ver su detalle':'Tap a product to see its details',
+'Indicadores':'Indicators','Devoluciones del mes, por revisar, en camino y cuánto restan a tu utilidad.':'This month’s returns, to review, on the way and how much they cut from your profit.',
+'Cada devolución con su motivo.':'Each return with its reason.','Decide si regresa al stock o es merma':'Decide if it goes back to stock or is a loss',
+'Lo que cobra TikTok. Si cambian, ajústalo aquí y todas tus finanzas se recalculan.':'What TikTok charges. If it changes, adjust it here and all your finances recalculate.',
+'El margen que buscas en cada tipo de precio. La calculadora de precios lo usa.':'The margin you aim for at each price type. The price calculator uses it.',
+'Inventario mínimo':'Minimum stock','Debajo de este número, una talla aparece como "bajo el mínimo".':'Below this number, a size shows as "below minimum".',
+'Metas y bono por venta':'Sales goals and bonus','Las metas de venta de cada host y el porcentaje que gana en cada escalón.':'Each host’s sales goals and the percentage earned at each step.',
+'Cuánto gana una host al mes por llegar a tiempo y cuántos minutos de tolerancia tiene.':'How much a host earns per month for being on time and how many minutes of grace they get.',
+'Bono por primer lugar':'First-place bonus','El premio para quien gane la carrera del mes.':'The prize for whoever wins the monthly race.',
+'Costos fijos':'Fixed costs','Tu nómina y gastos fijos al mes y por día.':'Your payroll and fixed expenses per month and per day.',
+'Tu equipo y sus sueldos. Entra directo al estado de resultados.':'Your team and their salaries. Feeds straight into the income statement.',
+'Renta, servicios y cualquier gasto que pagas cada mes.':'Rent, utilities and any expense you pay every month.',
+'Vistas por rol':'Views by role','Cada persona ve solo lo suyo: una host su meta y su bono; el almacén, envíos e inventario.':'Each person sees only their part: a host their goal and bonus; the warehouse, shipping and inventory.',
+'Toca una tarjeta para verla como esa persona':'Tap a card to see it as that person',
+'Idioma, tema claro u oscuro, sonidos y la simulación del cierre del mes.':'Language, light or dark theme, sounds and the month-end simulation.',
+'Exporta todo a Excel, descarga un respaldo y configura avisos de pago a proveedores.':'Export everything to Excel, download a backup and set supplier payment alerts.',
+// demo guiada de arriba
+'Esta es la pantalla del dueño: la venta de hoy se actualiza sola, minuto a minuto.':'This is the owner’s screen: today’s sales update on their own, minute by minute.',
+'Abajo están los pendientes del día: guías atrasadas, existencias bajas y devoluciones por revisar.':'Below are today’s to-dos: late labels, low stock and returns to review.',
+'Cada host tiene su venta del mes, su meta y su bono. Toca una tarjeta para ver su tablero completo.':'Each host has their monthly sales, goal and bonus. Tap a card to see their full dashboard.',
+'La carrera del mes motiva al equipo: el primer lugar gana un bono extra.':'The monthly race motivates the team: first place wins an extra bonus.',
+'La asistencia se registra con ubicación: puntuales, retardos y faltas, día por día.':'Attendance is recorded with location: on time, late and absent, day by day.',
+'Programa los turnos y horarios de LIVE de cada host. Los cambios se aprueban desde aquí.':'Schedule each host’s LIVE shifts. Changes are approved from here.',
+'El estado de resultados con todo: comisiones de TikTok, costo de producto, sueldos y utilidad real.':'The full income statement: TikTok fees, product cost, salaries and real profit.',
+'Explora las pestañas: ventas por día, por canal, por host y por producto.':'Explore the tabs: sales by day, channel, host and product.',
+'El almacén sube el PDF de guías y las marca como enviadas escaneando con la cámara.':'The warehouse uploads the labels PDF and marks them as shipped by scanning with the camera.',
+'Escanea cualquier guía y ve al momento si ya se mandó, quién la mandó y cuándo.':'Scan any label and see instantly if it shipped, who shipped it and when.',
+'Cada lote del proveedor se recibe con foto y conteo. También controla los pagos y vencimientos.':'Each supplier lot is received with a photo and count. It also tracks payments and due dates.',
+'El inventario se mueve solo con cada venta y cada lote. Toca un producto para ver su detalle.':'Inventory moves on its own with every sale and lot. Tap a product to see its details.',
+'Las devoluciones llegan aquí: decides si regresan al stock o son merma.':'Returns land here: you decide if they go back to stock or are a loss.',
+'Configura comisiones y márgenes: todos los precios y ganancias se recalculan solos.':'Set fees and margins: all prices and profits recalculate on their own.',
+'Define las metas y la escalera de bonos de tu equipo.':'Set your team’s goals and bonus ladder.',
+'Sueldos y gastos fijos: con esto la plataforma calcula tu utilidad y tu punto de equilibrio.':'Salaries and fixed expenses: with this the platform calculates your profit and break-even point.',
+'Prueba el modo oscuro, el idioma inglés y el modo simulación para ver el cierre del mes.':'Try dark mode, English and simulation mode to see the month-end close.',
+'Cambia de vista y mira la plataforma como la ve una host o el almacén. Cada quien ve solo lo suyo.':'Switch views and see the platform as a host or the warehouse does. Everyone sees only their part.',
+'Así ve la plataforma una host: su meta del día, su bono y su lugar en la carrera.':'This is how a host sees the platform: their daily goal, bonus and place in the race.',
+'Así ve la plataforma el almacén: solo lo que necesita para trabajar.':'This is how the warehouse sees the platform: only what they need to work.',
+// botones de la guía
+'Recorrido guiado · {0} pasos':'Guided tour · {0} steps','Cómo funciona':'How it works','Recorrer esta pantalla':'Tour this screen',
+'Guía de la demo':'Demo guide','{0} de {1} vistas':'{0} of {1} viewed','Siguiente':'Next','Ir a':'Go to',
+'Terminaste el recorrido':'You finished the tour','Ya conoces toda la plataforma':'Now you know the whole platform',
+'Imagina esto con tus procesos, tu equipo y tus números.':'Imagine this with your processes, your team and your numbers.','Volver al inicio':'Back to Home',
+'Recorrido desde aquí':'Tour from here','Mapa de la demo':'Demo map','¿A dónde quieres ir?':'Where do you want to go?',
+'Toca cualquier pantalla y te la explico paso a paso.':'Tap any screen and I’ll walk you through it.','Tu guía':'Your guide',
+'Puedes tocar y moverte libre mientras te guío':'Feel free to tap and move around while I guide you',
+'Saltar':'Skip','Empezar':'Start','Atrás':'Back','Quedarme aquí':'Stay here','Cerrar':'Close',
+'Ir a otra pantalla':'Go to another screen','Cerrar recorrido':'Close tour','Más información':'More info','Anterior':'Previous',
+'¡Terminaste la demo!':'You finished the demo!','Imagina esta plataforma con tus procesos, tu equipo y tus números.':'Imagine this platform with your processes, your team and your numbers.',
+'Ocultar guía':'Hide guide','Agendar una reunión':'Book a meeting',
+// vistas simples
+'vs semana anterior':'vs last week','Últimos 3 días':'Last 3 days','Todos los días':'Every day','Ver solo 3':'Show only 3','Ver los {0}':'See all {0}',
+'hasta hoy':'through today','Hoy':'Today','Ayer':'Yesterday','{0} pedidos':'{0} orders',
+'Toca un estado':'Tap a state','Menos':'Less','Más venta':'More sales','{0} de la venta':'{0} of sales','Mapa: SVG Maps · CC BY 4.0':'Map: SVG Maps · CC BY 4.0',
+'Mapa de calor de ventas por estado de México':'Heat map of sales by Mexican state',
+'De cada {0} que vendes':'Out of every {0} you sell','te quedan':'you keep','TikTok':'TikTok','Mercancía':'Merchandise','Operación':'Operations','Te queda':'You keep',
+'Vendiste':'You sold','Venta neta del mes':'Net sales this month','Comisiones, envíos y retenciones':'Fees, shipping and withholdings',
+'Lo que te costó lo vendido':'What the goods you sold cost you','Sueldos, bonos y gastos fijos':'Salaries, bonuses and fixed expenses','Utilidad neta':'Net profit',
+'Ocultar el detalle':'Hide details','Ver el estado de resultados completo':'See the full income statement',
+'Esta es la plataforma que usa una tienda de TikTok Shop para manejar ventas en vivo, inventario, envíos, equipo y finanzas. Los números son de ejemplo.':'This is the platform a TikTok Shop store uses to run live sales, inventory, shipping, team and finances. The numbers are examples.',
+'Sigue la':'Follow the','demo guiada':'guided demo','en cada pantalla':'on every screen','Cambia a la vista de una host o del almacén en':'Switch to a host or warehouse view in',
+'Guardamos tu nombre y las pantallas que visitas para darte seguimiento.':'We save your name and the screens you visit so we can follow up.',
+});
+I18N.ph=null;
+// frases que se arman con nombres de pantalla
+const fgT = s => (typeof LANG!=='undefined'&&LANG==='en'&&I18N_EN[s]!=null) ? I18N_EN[s] : s;
+
 /* ================= GUÍA FLEGREA: botones ⓘ, recorrido por pantalla y ruta guiada ================= */
 const FG_IC={
   i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 11v6"/><circle cx="12" cy="7.3" r="1.2" fill="currentColor" stroke="none"/></svg>',
@@ -8182,15 +8336,15 @@ function fgPaint(){
   if(!k){ fgPopClose(); if(FG.tour) fgTourEnd(true); return; }
   fgSeen(k); const S=fgScr(k), items=fgItems(k);
   items.forEach(it=>{ const {el,host}=fgFind(it); if(!el||el.querySelector(`:scope [data-fgi="${it.i}"]`)) return;
-    const b=`<span class="fg-i" role="button" tabindex="0" data-fg="info" data-fgi="${it.i}" aria-label="Qué es ${esc(it.t)}" data-noi18n>${FG_IC.i}</span>`;
+    const b=`<span class="fg-i" role="button" tabindex="0" data-fg="info" data-fgi="${it.i}" aria-label="Más información">${FG_IC.i}</span>`;
     if(host&&it.at!=='c'){ host.insertAdjacentHTML('beforeend',b); host.classList.add('fg-has'); }
     else { const cs=getComputedStyle(el); el.classList.add('fg-cor'); if(cs.overflow!=='visible'||cs.overflowX!=='visible') el.classList.add('fg-in'); el.insertAdjacentHTML('beforeend',b.replace('class="fg-i"','class="fg-i fg-c"')); }
   });
   // guía de la pestaña, justo debajo de las pestañas
   const tabs=v.querySelector('.dtabs')||v.querySelector(':scope > .seg.tabs, .hub > .seg.tabs');
-  if(tabs&&!v.querySelector('.fg-tab')) tabs.insertAdjacentHTML('afterend',`<div class="fg-tab" data-noi18n><span class="fg-pulse"></span><p><b>${S.n}</b><span>${S.d}</span></p><button class="fg-btn sm" data-fg="tour" type="button">${FG_IC.play}<span>Cómo funciona</span></button></div>`);
+  if(tabs&&!v.querySelector('.fg-tab')) tabs.insertAdjacentHTML('afterend',`<div class="fg-tab"><span class="fg-pulse"></span><p><b>${S.n}</b><span>${S.d}</span></p><button class="fg-btn sm" data-fg="tour" type="button">${FG_IC.play}<span>Cómo funciona</span></button></div>`);
   // la guía de arriba invita al recorrido
-  const tip=v.querySelector(':scope > .fx-tip'); if(tip&&!tip.querySelector('.fg-tip-a')) tip.insertAdjacentHTML('beforeend',`<div class="fg-tip-a" data-noi18n><button class="fg-btn" data-fg="tour" type="button">${FG_IC.play}<span>Recorrido guiado · ${items.length+2} pasos</span></button></div>`);
+  const tip=v.querySelector(':scope > .fx-tip'); if(tip&&!tip.querySelector('.fg-tip-a')) tip.insertAdjacentHTML('beforeend',`<div class="fg-tip-a"><button class="fg-btn" data-fg="tour" type="button">${FG_IC.play}<span>Recorrido guiado · ${items.length+2} pasos</span></button></div>`);
   // abajo: siguiente apartado
   if(!v.querySelector('.fg-next')){ const cta=v.querySelector(':scope > .fx-cta'); const h=fgNextHtml(k); if(cta) cta.insertAdjacentHTML('beforebegin',h); else v.insertAdjacentHTML('beforeend',h); }
   if(FG.tour){ if(FG.tour.k!==k) fgTourSwitch(k); else requestAnimationFrame(fgTourPlace); }
@@ -8199,8 +8353,8 @@ function fgPaint(){
 function fgNextHtml(k){
   const i=fgIdx(k), N=FG_SCREENS.length, S=FG_SCREENS[i], nx=FG_SCREENS[i+1], seen=fgSeenGet().filter(x=>fgScr(x)).length, pct=Math.round(seen/N*100);
   const head=`<div class="fg-next-top"><span class="fg-k"><img class="fx-logo" src="${LOGO}" alt="">Guía de la demo</span><button class="fg-map-b" data-fg="map" type="button">${FG_IC.map}<span>${seen} de ${N} vistas</span></button></div><div class="fg-prog"><u style="width:${pct}%"></u></div>`;
-  if(!nx) return `<div class="fg-next" data-noi18n>${head}<div class="fg-next-b"><div class="grow"><span class="fg-l">Terminaste el recorrido</span><b>Ya conoces toda la plataforma</b><p>Imagina esto con tus procesos, tu equipo y tus números.</p></div><div class="fg-next-a"><button class="fg-btn ghost" data-fg="go" data-k="inicio" type="button"><span>Volver al inicio</span></button>${fxCal('Agendar una reunión','fg-cal')}</div></div></div>`;
-  return `<div class="fg-next" data-noi18n>${head}<div class="fg-next-b"><div class="grow"><span class="fg-l">Siguiente · ${nx.s!==S.s?esc(nx.s)+' › ':''}${esc(nx.n)}</span><b>${esc(nx.d)}</b></div><div class="fg-next-a"><button class="fg-btn ghost" data-fg="tour" type="button">${FG_IC.play}<span>Recorrer esta pantalla</span></button><button class="fg-btn pri" data-fg="go" data-k="${nx.k}" data-t="1" type="button"><span>Ir a ${esc(nx.n)}</span>${FG_IC.next}</button></div></div></div>`;
+  if(!nx) return `<div class="fg-next">${head}<div class="fg-next-b"><div class="grow"><span class="fg-l">Terminaste el recorrido</span><b>Ya conoces toda la plataforma</b><p>Imagina esto con tus procesos, tu equipo y tus números.</p></div><div class="fg-next-a"><button class="fg-btn ghost" data-fg="go" data-k="inicio" type="button"><span>Volver al inicio</span></button>${fxCal('Agendar una reunión','fg-cal')}</div></div></div>`;
+  return `<div class="fg-next">${head}<div class="fg-next-b"><div class="grow"><span class="fg-l"><span>Siguiente</span> · ${nx.s!==S.s?`<span>${esc(nx.s)}</span> › `:''}<span>${esc(nx.n)}</span></span><b>${esc(nx.d)}</b></div><div class="fg-next-a"><button class="fg-btn ghost" data-fg="tour" type="button">${FG_IC.play}<span>Recorrer esta pantalla</span></button><button class="fg-btn pri" data-fg="go" data-k="${nx.k}" data-t="1" type="button"><span><span>Ir a</span> <span>${esc(nx.n)}</span></span>${FG_IC.next}</button></div></div></div>`;
 }
 function fgGo(k,tour){ fgPopClose(); fgTourEnd(true);
   if(k.startsWith('fin:')){ ST.dsec=k.slice(4); go('dinero','resultados'); } else { const [r,t]=k.split('/'); go(r,t); }
@@ -8209,7 +8363,7 @@ function fgGo(k,tour){ fgPopClose(); fgTourEnd(true);
 function fgPop(i,anchor){
   const k=fgKey(); if(!k) return; const items=fgItems(k); const pos=items.findIndex(x=>x.i===i); const it=items[pos]; if(!it) return;
   const S=fgScr(k); fgPopClose(true);
-  const html=`<div id="fg-pop" role="dialog" aria-label="${esc(it.t)}" data-noi18n><div class="fg-pop-in">
+  const html=`<div id="fg-pop" role="dialog" aria-label="${esc(it.t)}"><div class="fg-pop-in">
     <div class="fg-pop-h"><span class="fg-chip">${FG_IC.i}<span>${esc(S.s)}${S.s!==S.n?' · '+esc(S.n):''}</span></span><button class="fg-x" data-fg="pclose" type="button" aria-label="Cerrar">${FG_IC.x}</button></div>
     <h4>${esc(it.t)}</h4><p>${esc(it.d)}</p>
     ${it.b?`<ul>${it.b.map((x,j)=>`<li style="--d:${j}"><i>${FG_IC.ok}</i><span>${esc(x)}</span></li>`).join('')}</ul>`:''}
@@ -8234,7 +8388,7 @@ function fgPopMove(d){ if(!FG.pop) return; const items=fgItems(FG.pop.k); const 
 /* ---------- mapa de la demo ---------- */
 function fgMap(){ const seen=fgSeenGet(), k=fgKey(); fgPopClose(true);
   const groups=[]; FG_SCREENS.forEach(x=>{ let g=groups.find(y=>y.s===x.s); if(!g) groups.push(g={s:x.s,l:[]}); g.l.push(x); });
-  document.body.insertAdjacentHTML('beforeend',`<div id="fg-dim" data-fg="pclose"></div><div id="fg-pop" class="fg-mapp sheet-c" role="dialog" aria-label="Mapa de la demo" data-noi18n><div class="fg-pop-in">
+  document.body.insertAdjacentHTML('beforeend',`<div id="fg-dim" data-fg="pclose"></div><div id="fg-pop" class="fg-mapp sheet-c" role="dialog" aria-label="Mapa de la demo"><div class="fg-pop-in">
     <div class="fg-pop-h"><span class="fg-chip">${FG_IC.map}<span>Mapa de la demo</span></span><button class="fg-x" data-fg="pclose" type="button" aria-label="Cerrar">${FG_IC.x}</button></div>
     <h4>¿A dónde quieres ir?</h4><p>Toca cualquier pantalla y te la explico paso a paso.</p>
     <div class="fg-mapl">${groups.map(g=>`<div class="fg-mg"><span>${esc(g.s)}</span>${g.l.map(x=>`<button class="fg-mi ${x.k===k?'on':''} ${seen.includes(x.k)?'ok':''}" data-fg="go" data-k="${x.k}" data-t="1" type="button"><i>${seen.includes(x.k)?FG_IC.ok:''}</i><b>${esc(x.n)}</b>${FG_IC.r}</button>`).join('')}</div>`).join('')}</div></div></div>`);
@@ -8242,11 +8396,11 @@ function fgMap(){ const seen=fgSeenGet(), k=fgKey(); fgPopClose(true);
   requestAnimationFrame(()=>{ p.classList.add('in'); document.getElementById('fg-dim')?.classList.add('in'); }); }
 /* ---------- recorrido paso a paso ---------- */
 function fgSteps(k){ const S=fgScr(k), i=fgIdx(k), nx=FG_SCREENS[i+1];
-  return [{s:S.a,t:S.n,d:S.d,intro:1}, ...fgItems(k).map(it=>({...it,item:1})), {t:nx?'¡Listo! Ya conoces '+S.n:'¡Terminaste la demo!',d:nx?`Sigue con ${nx.n}.`:'Imagina esta plataforma con tus procesos, tu equipo y tus números.',end:1,nx}];
+  return [{s:S.a,t:S.n,d:S.d,intro:1}, ...fgItems(k).map(it=>({...it,item:1})), {t:nx?(LANG==='en'?`Done! Now you know ${fgT(S.n)}`:'¡Listo! Ya conoces '+S.n):'¡Terminaste la demo!',d:nx?(LANG==='en'?`Next up: ${fgT(nx.n)}.`:`Sigue con ${nx.n}.`):'Imagina esta plataforma con tus procesos, tu equipo y tus números.',end:1,nx}];
 }
 function fgTour(start){ const k=fgKey(); if(!k) return; fgPopClose(true); const steps=fgSteps(k);
   FG.tour={k,steps,i:Math.min(start||0,steps.length-1)};
-  if(!document.getElementById('fg-tour')) document.body.insertAdjacentHTML('beforeend',`<div id="fg-tour" data-noi18n><div class="fg-dim2"></div><div class="fg-ring"></div><div class="fg-card" role="dialog" aria-live="polite"></div></div>`);
+  if(!document.getElementById('fg-tour')) document.body.insertAdjacentHTML('beforeend',`<div id="fg-tour"><div class="fg-dim2"></div><div class="fg-ring"></div><div class="fg-card" role="dialog" aria-live="polite"></div></div>`);
   document.body.classList.add('fg-touring'); const b=document.getElementById('fg-tour'); requestAnimationFrame(()=>b.classList.add('in')); fgTourShow(); }
 function fgTarget(st){ if(!st.s) return null; if(st.item) return fgFind(st).el; const v=document.getElementById('view'); return [...(v?v.querySelectorAll(st.s):[])].find(fgVis)||null; }
 const FGP={pad:8,gap:14,edge:14};
@@ -8260,7 +8414,7 @@ function fgTourShow(){ const T=FG.tour; if(!T) return; const st=T.steps[T.i], n=
     <div class="fg-dots">${T.steps.map((_,j)=>`<i class="${j<T.i?'done':j===T.i?'on':''}"></i>`).join('')}</div>
     <h4>${esc(st.t)}</h4><p>${esc(st.d)}</p>${st.intro?`<span class="fg-free">Puedes tocar y moverte libre mientras te guío</span>`:''}
     <div class="fg-card-f">${last?
-      (st.nx?`<button class="fg-btn ghost sm" data-fg="tend" type="button">Quedarme aquí</button><button class="fg-btn pri sm" data-fg="go" data-k="${st.nx.k}" data-t="1" type="button"><span>Ir a ${esc(st.nx.n)}</span>${FG_IC.next}</button>`
+      (st.nx?`<button class="fg-btn ghost sm" data-fg="tend" type="button">Quedarme aquí</button><button class="fg-btn pri sm" data-fg="go" data-k="${st.nx.k}" data-t="1" type="button"><span><span>Ir a</span> <span>${esc(st.nx.n)}</span></span>${FG_IC.next}</button>`
              :`<button class="fg-btn ghost sm" data-fg="tend" type="button">Cerrar</button>${fxCal('Agendar una reunión','fg-cal sm')}`)
       :`${T.i?`<button class="fg-btn ghost sm" data-fg="tprev" type="button">${FG_IC.l}<span>Atrás</span></button>`:`<button class="fg-btn ghost sm" data-fg="tend" type="button">Saltar</button>`}<button class="fg-btn pri sm" data-fg="tnext" type="button"><span>${T.i?'Siguiente':'Empezar'}</span>${FG_IC.next}</button>`}</div></div>`;
   card.classList.remove('swap'); void card.offsetWidth; card.classList.add('swap');
